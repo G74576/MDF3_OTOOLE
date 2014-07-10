@@ -45,6 +45,7 @@ public class MyActivity extends Activity {
     TextView usmcText;
     TextView imageText;
     Uri imageUri;
+    String sharedText;
     Button sendButton;
 
     @Override
@@ -68,6 +69,8 @@ public class MyActivity extends Activity {
         if (Intent.ACTION_SEND.equals(action) && type != null){
             if (type.startsWith("image/*")){
                 attachedImage(intent);
+            } else if ("text/plain".equals(type)){
+                attachText(intent);
             }
         }else {
             //OnClickListener for Send Button:
@@ -125,6 +128,32 @@ public class MyActivity extends Activity {
         }
     }
 
+    //Method to attach text:
+    void attachText(Intent intent){
+        sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
+        if (sharedText != null){
+            Log.i("SHARED_TEXT", String.valueOf(sharedText));
+
+            //Set attachement text to imageUri string:
+            imageText.setText(String.valueOf(sharedText));
+
+            //OnClickListener for Send Button:
+            sendButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //Check to see if valid email:
+                    String toEm = toEmail.getText().toString();
+                    if (!isValidEmail(toEm)){
+                        toEmail.setError("Please enter a valid email address.");
+                    } else {
+                        toEmail.setError(null);
+                        sendEmailText(sharedText);
+                    }
+                }
+            });
+        }
+    }
+
     void sendEmail(Uri imageUri){
         String to = toEmail.getText().toString();
         String subj = toSubject.getText().toString();
@@ -138,6 +167,32 @@ public class MyActivity extends Activity {
         email.putExtra(Intent.EXTRA_SUBJECT, subj);
         email.putExtra(Intent.EXTRA_TEXT, finalMsg);
         email.putExtra(Intent.EXTRA_STREAM, imageUri);
+
+        //Returns user to the app after the message is sent:
+        email.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        //Prompt for email client:
+        email.setType("message/rfc822");
+
+        try {
+            startActivity(Intent.createChooser(email, "Choose an Email Client"));
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(_context, R.string.noEmail, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    void sendEmailText(String sharedText){
+        String to = toEmail.getText().toString();
+        String subj = toSubject.getText().toString();
+        String mess = toMessage.getText().toString();
+        String termText = usmcText.getText().toString();
+        String finalMsg = (mess + "\n\n" + sharedText + "\n\n" + termText);
+
+        //To send the email with the photo attached:
+        Intent email = new Intent(Intent.ACTION_SEND);
+        email.putExtra(Intent.EXTRA_EMAIL, new String[] {to});
+        email.putExtra(Intent.EXTRA_SUBJECT, subj);
+        email.putExtra(Intent.EXTRA_TEXT, finalMsg);
 
         //Returns user to the app after the message is sent:
         email.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -178,13 +233,9 @@ public class MyActivity extends Activity {
         }
     }
 
-    public final static boolean isValidEmail(CharSequence target){
-        if (TextUtils.isEmpty(target)){
-            return false;
-        }
-        else {
-            return Patterns.EMAIL_ADDRESS.matcher(target).matches();
-        }
+    //Method to validate Email Address
+    public static boolean isValidEmail(CharSequence target){
+        return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches();
     }
 
     @Override
@@ -200,9 +251,6 @@ public class MyActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 }
