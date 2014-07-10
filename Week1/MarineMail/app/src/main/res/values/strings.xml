@@ -20,6 +20,6 @@
     <!-- Email Client Text -->
     <string name="noEmail">There are no email clients to choose from!</string>
 
-    <!-- Marine Terminology -->
+    <!-- Marine Terminology / Quotes etc. Will be used for Array to populate text field -->
 
 </resources>

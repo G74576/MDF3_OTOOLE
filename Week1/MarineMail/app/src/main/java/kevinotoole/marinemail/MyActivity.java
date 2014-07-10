@@ -103,6 +103,8 @@ public class MyActivity extends Activity {
         String to = toEmail.getText().toString();
         String subj = toSubject.getText().toString();
         String mess = toMessage.getText().toString();
+        String termText = usmcText.getText().toString();
+        String finalMsg = (mess + "\n\n" + termText);
 
         //To send the email with the photo attached:
         Intent email = new Intent(Intent.ACTION_SEND);
