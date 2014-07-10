@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Marine Mail</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- To, Subj, Message, Att text -->
+    <string name="to">To:</string>
+    <string name="emailHint">JoeSmith@gmail.com</string>
+    <string name="subj">Subject:</string>
+    <string name="subjHint">Type a subject here…</string>
+    <string name="mess">Message:</string>
+    <string name="messHint">Type your message here…</string>
+    <string name="attImages">Attached Image:</string>
+
+    <!-- Send Button Text -->
+    <string name="sendBtn">Send Message</string>
+
+    <!-- Email Client Text -->
+    <string name="noEmail">There are no email clients to choose from!</string>
+
+    <!-- Marine Terminology -->
+
+</resources>
