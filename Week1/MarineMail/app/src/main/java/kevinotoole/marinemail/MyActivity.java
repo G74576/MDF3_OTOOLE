@@ -21,7 +21,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,7 +46,6 @@ public class MyActivity extends Activity {
     TextView imageText;
     Uri imageUri;
     Button sendButton;
-    Boolean value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +70,20 @@ public class MyActivity extends Activity {
                 attachedImage(intent);
             }
         }else {
-            //Set Enabled:
-            value = false;
-            setEnabled(value);
-
-            //Create an Alert Dialog here **************************************
+            //OnClickListener for Send Button:
+            sendButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //Check to see if valid email:
+                    String toEm = toEmail.getText().toString();
+                    if (!isValidEmail(toEm)){
+                        toEmail.setError("Please enter a valid email address.");
+                    } else {
+                        toEmail.setError(null);
+                        sendEmailnoAtt();
+                    }
+                }
+            });
         }
 
         //Set USMC Terminology & Quotes Random text so different with each refresh.
@@ -98,15 +108,18 @@ public class MyActivity extends Activity {
             //Set attachement text to imageUri string:
             imageText.setText(String.valueOf(imageUri));
 
-            //Set Enabled Value:
-            value = true;
-            setEnabled(value);
-
             //OnClickListener for Send Button:
             sendButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    sendEmail(imageUri) ;
+                    //Check to see if valid email:
+                    String toEm = toEmail.getText().toString();
+                    if (!isValidEmail(toEm)){
+                        toEmail.setError("Please enter a valid email address.");
+                    } else {
+                        toEmail.setError(null);
+                        sendEmail(imageUri);
+                    }
                 }
             });
         }
@@ -116,14 +129,14 @@ public class MyActivity extends Activity {
         String to = toEmail.getText().toString();
         String subj = toSubject.getText().toString();
         String mess = toMessage.getText().toString();
-       // String termText = usmcText.getText().toString();
-       // String finalMsg = (mess + "\n\n" + termText);
+        String termText = usmcText.getText().toString();
+        String finalMsg = (mess + "\n\n" + termText);
 
         //To send the email with the photo attached:
         Intent email = new Intent(Intent.ACTION_SEND);
         email.putExtra(Intent.EXTRA_EMAIL, new String[] {to});
         email.putExtra(Intent.EXTRA_SUBJECT, subj);
-        email.putExtra(Intent.EXTRA_TEXT, mess);
+        email.putExtra(Intent.EXTRA_TEXT, finalMsg);
         email.putExtra(Intent.EXTRA_STREAM, imageUri);
 
         //Returns user to the app after the message is sent:
@@ -139,12 +152,39 @@ public class MyActivity extends Activity {
         }
     }
 
-    //Set Enabled of to,subj,mess and button:
-    void setEnabled(Boolean value){
-        toEmail.setEnabled(value);
-        toSubject.setEnabled(value);
-        toMessage.setEnabled(value);
-        sendButton.setEnabled(value);
+    void sendEmailnoAtt(){
+        String to = toEmail.getText().toString();
+        String subj = toSubject.getText().toString();
+        String mess = toMessage.getText().toString();
+        String termText = usmcText.getText().toString();
+        String finalMsg = (mess + "\n\n" + termText);
+
+        //To send the email with the photo attached:
+        Intent email = new Intent(Intent.ACTION_SEND);
+        email.putExtra(Intent.EXTRA_EMAIL, new String[] {to});
+        email.putExtra(Intent.EXTRA_SUBJECT, subj);
+        email.putExtra(Intent.EXTRA_TEXT, finalMsg);
+
+        //Returns user to the app after the message is sent:
+        email.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        //Prompt for email client:
+        email.setType("message/rfc822");
+
+        try {
+            startActivity(Intent.createChooser(email, "Choose an Email Client"));
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(_context, R.string.noEmail, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public final static boolean isValidEmail(CharSequence target){
+        if (TextUtils.isEmpty(target)){
+            return false;
+        }
+        else {
+            return Patterns.EMAIL_ADDRESS.matcher(target).matches();
+        }
     }
 
     @Override
