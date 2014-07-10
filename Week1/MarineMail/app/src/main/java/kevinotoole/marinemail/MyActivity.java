@@ -30,6 +30,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
+
 
 public class MyActivity extends Activity {
 
@@ -74,6 +76,17 @@ public class MyActivity extends Activity {
             //Create an Alert Dialog here **************************************
         }
 
+        //Set USMC Terminology & Quotes Random text so different with each refresh.
+        int usmcRandom = (int) Math.ceil(Math.random() * 100);
+        Random randomUSMC = new Random();
+        int[] randomArray = new int[]{R.string.semperFi, R.string.devilDog, R.string.oohRah, R.string.quote1, R.string.theFew,
+                R.string.once, R.string.jarHead, R.string.ega};
+        int randomText = randomUSMC.nextInt(randomArray.length -1);
+        if (usmcRandom < 100){
+            usmcText.setText(randomArray[randomText]);
+        }
+        Log.i("USMCTEXT", usmcText.toString());
+
     }
 
     //Method to attach and send photo:
@@ -103,8 +116,8 @@ public class MyActivity extends Activity {
         String to = toEmail.getText().toString();
         String subj = toSubject.getText().toString();
         String mess = toMessage.getText().toString();
-        String termText = usmcText.getText().toString();
-        String finalMsg = (mess + "\n\n" + termText);
+       // String termText = usmcText.getText().toString();
+       // String finalMsg = (mess + "\n\n" + termText);
 
         //To send the email with the photo attached:
         Intent email = new Intent(Intent.ACTION_SEND);
