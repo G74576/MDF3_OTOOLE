@@ -51,4 +51,13 @@
         android:layout_centerHorizontal="true"
         android:layout_above="@id/clearButton" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:hint="Name Photo...."
+        android:id="@+id/photoName"
+        android:layout_above="@+id/usmcText"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

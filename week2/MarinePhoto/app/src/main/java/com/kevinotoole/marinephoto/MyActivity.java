@@ -7,7 +7,11 @@ package com.kevinotoole.marinephoto;
  * Project: Marine Photo
  * Package: com.kevinotoole.marinephoto;
  * File: MyActivity.java
- * Purpose:
+ * Purpose: this is just a simple camera app with a Marine Corp theme:  The app will allow the user
+ * to take a photo - that photo will be saved into the gallery under the application name as well
+ * as show the photo in an imageView within the application.  A notification will appear in the
+ * notification bar, letting the user know that the photo was saved to the gallery and they can
+ * click on that notification which will take them to the gallery.
  */
 
 import android.app.Activity;
@@ -49,7 +53,7 @@ public class MyActivity extends Activity {
     Button clearBtn;
     ImageView photoImg;
     TextView usmcTermText;
-    public static EditText photoName;
+    EditText photoName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,7 @@ public class MyActivity extends Activity {
         photoBtn.setOnClickListener(cameraListener);
         clearBtn = (Button) findViewById(R.id.clearButton);
         usmcTermText = (TextView) findViewById(R.id.usmcText);
+        photoName = (EditText) findViewById(R.id.photoName);
 
         //Create random quote/terminology for usmcTermText:
         //Set USMC Terminology & Quotes Random text so different with each refresh.
@@ -172,10 +177,11 @@ public class MyActivity extends Activity {
             //Create Notification when photo is saved:
             Notification notification;
             NotificationCompat.Builder nb = new NotificationCompat.Builder(this)
-                    .setSmallIcon(R.drawable.notifwhite) // Set small icon:
-                    .setLargeIcon(((BitmapDrawable)this.getResources().getDrawable(R.drawable.iconlarge)).getBitmap()) //Set large icon:
+                    .setSmallIcon(R.drawable.notification) // Set small icon:
+                    .setLargeIcon(((BitmapDrawable) this.getResources().getDrawable(R.drawable.icon)).getBitmap()) //Set large icon:
                     .setContentTitle("Marine Photo")  //Set Title:
-                    .setContentText("Photo Saved");  //Set Text:
+                    .setContentText("Your photo has been saved.")  //Set Text:
+                    .setSubText("Click to view photo in gallery");  //Set the sub text:
 
             //Create Intent to open photo in photo gallery from notification bar:
             String file = fileUri.toString();
