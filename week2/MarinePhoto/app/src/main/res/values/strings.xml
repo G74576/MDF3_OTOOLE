@@ -5,4 +5,21 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Buttons -->
+    <string name="photoBtnString">Take A Photo</string>
+    <string name="sendEmail">Send In Email</string>
+
+    <!-- Photo Image Content Description -->
+    <string name="photo">Photo taken with camera</string>
+
+    <!-- Marine Terminology / Quotes etc. Will be used for Array to populate text field -->
+    <string name="semperFi">\"Semper Fidelis\" - \n\"Always Faithful\" Is the motto of the United States Marine Corps.</string>
+    <string name="devilDog">\"Devil Dog\" - \nIs a motivational nickname for a U.S. Marine. It is based on the word \"Teufel Hunden\" said by German soldiers to describe Marines fighting in WWI.</string>
+    <string name="oohRah">\"OOH RAH!\" - \nIs a battle cry common in the United States Marine Corps.  It is most commonly used to respond to a verbal greeting or as an expression of enthusiasm.</string>
+    <string name="quote1">\"There are only two kinds of people that understand Marines: Marines and the enemy. Everyone else has a second hand opinion.\" \n Gen. William Thomas, U.S. Army</string>
+    <string name="theFew">The Few, The Proud, The Marines!</string>
+    <string name="jarHead">\"Jar Head\" - \nA slang term used to refer to members of the Marine Corps, originating from the high and tight haircut, which makes their heads look like a jar.</string>
+    <string name="once">\"Once a Marine, Always a Marine!\"</string>
+    <string name="ega">\"Eagle, Globe &amp; Anchor\" - \nEmblem of the United States Marine Corps.</string>
+
 </resources>
