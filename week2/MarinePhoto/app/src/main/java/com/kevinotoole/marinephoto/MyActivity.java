@@ -48,8 +48,6 @@ public class MyActivity extends Activity {
     TextView locationText;
     TextView usmcTermText;
 
-    private final int SMI_NOTIFICATION = 3;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,7 +148,7 @@ public class MyActivity extends Activity {
             }
 
             //Create Notification when photo is saved:
-            Notification notification = new Notification();
+            Notification notification;
             NotificationCompat.Builder nb = new NotificationCompat.Builder(this)
                     .setSmallIcon(R.drawable.notifwhite) // Set small icon:
                     .setLargeIcon(((BitmapDrawable)this.getResources().getDrawable(R.drawable.iconlarge)).getBitmap()) //Set large icon:
@@ -167,11 +165,14 @@ public class MyActivity extends Activity {
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, photoIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             nb.setContentIntent(pendingIntent);
 
+            //Set notification and set flag to auto cancel so notification is removed when clicked:
             notification = nb.build();
             notification.flags = Notification.FLAG_AUTO_CANCEL;
 
+            //Set notification manager:
             NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
+            int SMI_NOTIFICATION = 1;
             nm.notify(SMI_NOTIFICATION, notification);
 
         }
