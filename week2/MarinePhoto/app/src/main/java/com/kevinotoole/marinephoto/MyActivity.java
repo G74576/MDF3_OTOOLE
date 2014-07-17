@@ -28,12 +28,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 
 public class MyActivity extends Activity {
@@ -44,9 +46,10 @@ public class MyActivity extends Activity {
     public static final int MEDIA_TYPE_IMAGE = 1;
     public static final int MEDIA_TYPE_VIDEO = 2;
     Button photoBtn;
+    Button clearBtn;
     ImageView photoImg;
-    TextView locationText;
     TextView usmcTermText;
+    public static EditText photoName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +59,27 @@ public class MyActivity extends Activity {
         photoImg = (ImageView)findViewById(R.id.photoImage);
         photoBtn = (Button) findViewById(R.id.photoButton);
         photoBtn.setOnClickListener(cameraListener);
-        locationText = (TextView) findViewById(R.id.locationText);
+        clearBtn = (Button) findViewById(R.id.clearButton);
         usmcTermText = (TextView) findViewById(R.id.usmcText);
+
+        //Create random quote/terminology for usmcTermText:
+        //Set USMC Terminology & Quotes Random text so different with each refresh.
+        int usmcRandom = (int) Math.ceil(Math.random() * 100);
+        Random randomUSMC = new Random();
+        int[] randomArray = new int[]{R.string.semperFi, R.string.devilDog, R.string.oohRah, R.string.quote1, R.string.theFew,
+                R.string.once, R.string.jarHead, R.string.ega};
+        int randomText = randomUSMC.nextInt(randomArray.length -1);
+        if (usmcRandom < 100){
+            usmcTermText.setText(randomArray[randomText]);
+        }
+        Log.i("USMCTEXT", usmcTermText.getText().toString());
+
+        clearBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                photoImg.setImageBitmap(null);
+            }
+        });
 
     }
 
@@ -83,7 +105,7 @@ public class MyActivity extends Activity {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File mediaFile;
         if (type == MEDIA_TYPE_IMAGE){
-            mediaFile = new File(mediaStorageDir.getPath() + File.separator + "image_" + timeStamp + ".jpg");
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator + "IMG_" + timeStamp  + ".jpg");
         }
         else if (type == MEDIA_TYPE_VIDEO){
             mediaFile = new File(mediaStorageDir.getPath() + File.separator + "VID_" + timeStamp + ".mp4");

@@ -32,34 +32,23 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sendEmail"
-        android:id="@+id/emailButton"
+        android:text="@string/clearImg"
+        android:id="@+id/clearButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text=""
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        android:id="@+id/locationText"
-        android:layout_below="@+id/photoImage"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="4"
-        android:gravity="center"
+        android:paddingTop="5dp"
+        android:maxLines="5"
+        android:gravity="left"
         android:text=""
         android:id="@+id/usmcText"
         android:textColor="#FFFF00"
-        android:textSize="15sp"
+        android:textSize="14sp"
         android:textStyle="italic"
-        android:layout_below="@+id/locationText"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/clearButton" />
 
 </RelativeLayout>

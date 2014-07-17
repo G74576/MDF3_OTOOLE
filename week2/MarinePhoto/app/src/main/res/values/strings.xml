@@ -7,7 +7,7 @@
 
     <!-- Buttons -->
     <string name="photoBtnString">Take A Photo</string>
-    <string name="sendEmail">Send In Email</string>
+    <string name="clearImg">Clear Image</string>
 
     <!-- Photo Image Content Description -->
     <string name="photo">Photo taken with camera</string>
