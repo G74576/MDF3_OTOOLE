@@ -32,7 +32,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -53,8 +52,7 @@ public class MyActivity extends Activity {
     Button clearBtn;
     ImageView photoImg;
     TextView usmcTermText;
-    EditText photoName;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +63,6 @@ public class MyActivity extends Activity {
         photoBtn.setOnClickListener(cameraListener);
         clearBtn = (Button) findViewById(R.id.clearButton);
         usmcTermText = (TextView) findViewById(R.id.usmcText);
-        photoName = (EditText) findViewById(R.id.photoName);
 
         //Create random quote/terminology for usmcTermText:
         //Set USMC Terminology & Quotes Random text so different with each refresh.
