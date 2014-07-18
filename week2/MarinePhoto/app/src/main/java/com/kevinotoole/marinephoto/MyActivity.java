@@ -52,7 +52,7 @@ public class MyActivity extends Activity {
     Button clearBtn;
     ImageView photoImg;
     TextView usmcTermText;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
