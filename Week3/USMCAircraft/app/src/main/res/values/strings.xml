@@ -7,4 +7,46 @@
 
     <string name="image">USMC Aircraft</string>
 
+    <!-- Aircraft Titles -->
+    <string name="hornet">F/A-18C/D</string>
+    <string name="hornet1">Hornet</string>
+
+    <string name="harrier">AV-8B</string>
+    <string name="harrier1">Harrier</string>
+
+    <string name="prowler">EA-6B</string>
+    <string name="prowler1">Prowler</string>
+
+    <string name="f5">F-5</string>
+    <string name="f51"> </string>
+
+    <string name="hercules">KC-130J/T</string>
+    <string name="hercules1">Hercules</string>
+
+    <string name="sky">C-9B</string>
+    <string name="sky1">Skytrain II</string>
+
+    <string name="huron">C-12B/F</string>
+    <string name="huron1">Huron</string>
+
+    <string name="gulf">C-20G</string>
+    <string name="gulf1">Gulfstream IV</string>
+
+    <string name="citation">UC-35C/D</string>
+    <string name="citation1">Citation / Encore</string>
+
+    <string name="cobra">AH-1W</string>
+    <string name="cobra1">Super Cobra</string>
+
+    <string name="huey">UH-1N</string>
+    <string name="huey1">Twin Huey</string>
+
+    <string name="sea">CH-46E</string>
+    <string name="sea1">Sea Knight</string>
+
+    <string name="stallion">CH-53E</string>
+    <string name="stallion1">Super Stallion</string>
+
+    <string name="osprey">MV-22B</string>
+    <string name="osprey1">Osprey</string>
 </resources>
