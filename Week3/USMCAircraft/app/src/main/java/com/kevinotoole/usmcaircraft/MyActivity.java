@@ -1,5 +1,15 @@
 package com.kevinotoole.usmcaircraft;
 
+/**
+ * Author: Kevin OToole
+ * MDF3 Term 1407
+ * Week 3 Project
+ * Project: USMC Aircraft
+ * Package: com.kevinotoole.usmcaircraft;
+ * File: MyActivity.java
+ * Purpose: 
+ */
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
