@@ -39,17 +39,9 @@ public class MyActivity extends Activity implements AdapterView.OnItemClickListe
     public static final String[] descriptions = new String[] {"Hornet", "Harrier", "Prowler", "F5", "Hercules", "Skytrain II", "Huron",
                                                         "Gulfstream IV", "Citation/Encore", "Super Cobra", "Twin Huey", "Sea Knight",
                                                         "Super Stallion", "Osprey"};
-//    public static final String[] titles = new String[] {res.getString(R.string.hornet), res.getString(R.string.harrier), res.getString(R.string.prowler),
-//                                    res.getString(R.string.f5), res.getString(R.string.hercules), res.getString(R.string.sky), res.getString(R.string.huron),
-//                                    res.getString(R.string.gulf), res.getString(R.string.citation), res.getString(R.string.cobra), res.getString(R.string.huey),
-//                                    res.getString(R.string.sea), res.getString(R.string.stallion), res.getString(R.string.osprey)};
-//
-//    public static final String[] descriptions = new String[] {res.getString(R.string.hornet1), res.getString(R.string.harrier1), res.getString(R.string.prowler1),
-//                                    res.getString(R.string.f51), res.getString(R.string.hercules1), res.getString(R.string.sky1), res.getString(R.string.huron1),
-//                                    res.getString(R.string.gulf1), res.getString(R.string.citation1), res.getString(R.string.cobra1), res.getString(R.string.huey1),
-//                                    res.getString(R.string.sea1), res.getString(R.string.stallion1), res.getString(R.string.osprey1)};
 
-    ListView listView;
+    public static ListView listView;
+    public static CustomListViewAdapter adapter;
     ArrayList<AircraftInfo> aircraftInfo;
 
     @Override
@@ -64,7 +56,7 @@ public class MyActivity extends Activity implements AdapterView.OnItemClickListe
         }
 
         listView = (ListView) findViewById(R.id.listView);
-        CustomListViewAdapter adapter = new CustomListViewAdapter(this, R.layout.list_item, aircraftInfo);
+        adapter = new CustomListViewAdapter(this, R.layout.list_item, aircraftInfo);
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
@@ -73,7 +65,7 @@ public class MyActivity extends Activity implements AdapterView.OnItemClickListe
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast toast = Toast.makeText(getApplicationContext(), "AC" + (position + 1) + ":" + aircraftInfo.get(position), Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), "USMC Aircraft" + ": " + aircraftInfo.get(position).getTitle().toString() + " " + aircraftInfo.get(position).getDescription().toString(), Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0);
         toast.show();
     }

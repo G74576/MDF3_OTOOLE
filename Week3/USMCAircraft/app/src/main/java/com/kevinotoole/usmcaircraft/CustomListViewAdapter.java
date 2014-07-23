@@ -1,6 +1,5 @@
 package com.kevinotoole.usmcaircraft;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Author: Kevin OToole
@@ -23,11 +22,9 @@ import java.util.List;
 
 public class CustomListViewAdapter extends ArrayAdapter<AircraftInfo> {
 
-    Context context;
-
-    public CustomListViewAdapter(Context context, int resourceId, List<AircraftInfo> items){
+    public CustomListViewAdapter(Context context, int resourceId, ArrayList<AircraftInfo> items){
         super(context, resourceId, items);
-        this.context = context;
+
     }
 
     //Create View Holder:
@@ -38,27 +35,30 @@ public class CustomListViewAdapter extends ArrayAdapter<AircraftInfo> {
     }
 
     public View getView(int position, View convertView, ViewGroup parent){
-        ViewHolder holder = null;
+        ViewHolder holder;
         AircraftInfo aircraftInfo = getItem(position);
-
-        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        if (convertView == null){
-            convertView = layoutInflater.inflate(R.layout.list_item, null);
+        View view = convertView;
+        if (view == null){
+            LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = layoutInflater.inflate(R.layout.list_item, null);
             holder = new ViewHolder();
-            holder.imageView = (ImageView) convertView.findViewById(R.id.aircraftImage);
-            holder.titleText = (TextView) convertView.findViewById(R.id.aircraftTitle);
-            holder.descText = (TextView) convertView.findViewById(R.id.aircraftDescription);
-            convertView.setTag(holder);
-        }
-        else{
-            holder = (ViewHolder) convertView.getTag();
+            holder.imageView = (ImageView) view.findViewById(R.id.aircraftImage);
+            holder.titleText = (TextView) view.findViewById(R.id.aircraftTitle);
+            holder.descText = (TextView) view.findViewById(R.id.aircraftDescription);
 
             holder.imageView.setImageResource(aircraftInfo.getImageId());
             holder.titleText.setText(aircraftInfo.getTitle());
             holder.descText.setText(aircraftInfo.getDescription());
 
-
+            view.setTag(holder);
         }
-        return convertView;
+        else{
+            holder = (ViewHolder) view.getTag();
+
+            holder.imageView.setImageResource(aircraftInfo.getImageId());
+            holder.titleText.setText(aircraftInfo.getTitle());
+            holder.descText.setText(aircraftInfo.getDescription());
+        }
+        return view;
     }
 }

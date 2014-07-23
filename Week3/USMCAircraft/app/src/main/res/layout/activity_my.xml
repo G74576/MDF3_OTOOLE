@@ -5,11 +5,22 @@
     android:orientation="vertical"
     tools:context=".MyActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/heading"
+        android:background="#BA0000"
+        android:id="@+id/heading"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#FFFF00"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal" />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/listView"
-
         />
 
 
