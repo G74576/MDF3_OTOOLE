@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="250dp"
+    android:orientation="vertical"
+    android:padding="4dp"
+    android:background="#BA0000">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/widgetPrevious"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="left"
+                android:background="#BA0000"
+                android:src="@drawable/ic_action_previous_item"
+                android:contentDescription="@string/prev"/>
+
+
+            <TextView
+                android:id="@+id/widgetTitle"
+                android:layout_width="162dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text=""
+                android:textColor="#FFFF00"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/widgetNext"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right"
+                android:background="#BA0000"
+                android:src="@drawable/ic_action_next_item"
+                android:contentDescription="@string/next"/>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/widgetImage"
+            android:layout_width="250dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:background="#000000"
+            android:contentDescription="@string/acimg"
+            android:scaleType="fitXY"/>
+    </LinearLayout>
+
+</FrameLayout>

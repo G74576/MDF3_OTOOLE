@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose a background color."
+        android:id="@+id/header"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#FFFF00"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:text="Scarlet"
+        android:id="@+id/scarletBtn"
+        android:background="#BA0000"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/header"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:text="Gold"
+        android:id="@+id/goldBtn"
+        android:background="#FFFF00"
+        android:layout_below="@+id/scarletBtn"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        android:id="@+id/doneButton"
+        android:layout_below="@+id/goldBtn"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>
