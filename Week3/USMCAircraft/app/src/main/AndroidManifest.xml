@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".DetailView"
+                  android:label="USMC Aircraft Detail">
+
+        </activity>
+        <activity android:name=".WidgetDetailView"
+                  android:label="USMC Aircraft Detail">
+
+        </activity>
         <receiver android:name=".AircraftWidgetProvider" >
             <intent-filter>
                 <action

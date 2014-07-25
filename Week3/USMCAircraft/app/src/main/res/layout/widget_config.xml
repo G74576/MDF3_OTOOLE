@@ -36,13 +36,5 @@
         android:layout_below="@+id/scarletBtn"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Done"
-        android:id="@+id/doneButton"
-        android:layout_below="@+id/goldBtn"
-        android:layout_centerHorizontal="true" />
-
 
 </RelativeLayout>

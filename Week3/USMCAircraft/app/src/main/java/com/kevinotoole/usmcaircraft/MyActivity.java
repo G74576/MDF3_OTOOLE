@@ -11,22 +11,19 @@ package com.kevinotoole.usmcaircraft;
  */
 
 import android.app.Activity;
-import android.content.res.Resources;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 
 public class MyActivity extends Activity implements AdapterView.OnItemClickListener{
-
-    public static Resources res;
 
     //Arrays to hold aircraft information:
     public static final Integer[] images = {R.drawable.hornet, R.drawable.harrier, R.drawable.prowler, R.drawable.f5, R.drawable.hercules,
@@ -49,12 +46,14 @@ public class MyActivity extends Activity implements AdapterView.OnItemClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
+        //Set Arraylist with aircraft information
         aircraftInfo = new ArrayList<AircraftInfo>();
         for (int i=0; i<images.length; i++){
             AircraftInfo info = new AircraftInfo(images[i], titles[i], descriptions[i]);
             aircraftInfo.add(info);
         }
 
+        //Set listview and adapter:
         listView = (ListView) findViewById(R.id.listView);
         adapter = new CustomListViewAdapter(this, R.layout.list_item, aircraftInfo);
 
@@ -63,11 +62,23 @@ public class MyActivity extends Activity implements AdapterView.OnItemClickListe
 
     }
 
+    //Onclick Listener for listview:
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast toast = Toast.makeText(getApplicationContext(), "USMC Aircraft" + ": " + aircraftInfo.get(position).getTitle().toString() + " " + aircraftInfo.get(position).getDescription().toString(), Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0);
-        toast.show();
+            String title, descr;
+            int imgid;
+            imgid = aircraftInfo.get(position).getImageId();
+            title = aircraftInfo.get(position).getTitle();
+            descr = aircraftInfo.get(position).getDescription();
+
+        Log.i("AIRCRAFT_DETAIL", imgid + " " + title + " " + descr);
+
+            //Intent to pass information to detailView:
+            Intent detailView = new Intent(MyActivity.this, DetailView.class);
+            detailView.putExtra("IMGID", imgid);
+            detailView.putExtra("TITLE", title);
+            detailView.putExtra("DESCR", descr);
+            startActivityForResult(detailView, 0);
     }
 
     @Override
