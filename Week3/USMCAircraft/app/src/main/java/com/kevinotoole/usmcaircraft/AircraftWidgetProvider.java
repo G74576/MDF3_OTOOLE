@@ -36,6 +36,7 @@ public class AircraftWidgetProvider extends AppWidgetProvider {
             "Gulfstream IV", "Citation/Encore", "Super Cobra", "Twin Huey", "Sea Knight",
             "Super Stallion", "Osprey"};
 
+    //Global Variables:
     public String tit;
     public String des;
     public int imgid;
@@ -45,12 +46,14 @@ public class AircraftWidgetProvider extends AppWidgetProvider {
 
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 
+        //Set arraylist:
         arrayList = new ArrayList<AircraftInfo>();
         for (int i=0; i<images.length; i++) {
             AircraftInfo info = new AircraftInfo(images[i], titles[i], descriptions[i]);
             arrayList.add(info);
         }
 
+        //Create random image for when widget is created:
         imgRandom = new Random();
         int index = imgRandom.nextInt(arrayList.size());
         AircraftInfo item = arrayList.get(index);
@@ -58,6 +61,7 @@ public class AircraftWidgetProvider extends AppWidgetProvider {
         tit = item.getTitle();
         des = item.getDescription();
 
+        //Send image and details to detail view:
         Intent wiIntent = new Intent(context, WidgetDetailView.class);
         String titl, descp;
         int img;
