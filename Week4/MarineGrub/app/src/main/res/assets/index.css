@@ -1,0 +1,37 @@
+/*
+	Kevin O'Toole
+	MDF3 Term 1407
+	Week 4 Project
+	Project: Marine Grub
+	File: index.css
+*/
+
+#home{
+	background-color: #000000;
+}
+
+#collectionForm{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#fnameLabel, #lnameLabel, #emailLabel, #phoneLabel, #formLegend {
+	color: #FFFF00;
+}
+
+#submit {
+	text-align: left;
+	margin-right: 20px;
+	color: #FFFF00;
+	background: #BA0000;
+}
+
+#reset {
+	text-align: right;
+	color: #000000;
+	background: #CCCCCC;
+}
+
+ul#error {
+	text-shadow: none;
+}
