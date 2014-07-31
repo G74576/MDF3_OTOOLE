@@ -30,7 +30,7 @@ public class MyActivity extends Activity {
     String eMail;
     String pHone;
 
-    String url = "file:///Users/kevinotoole/Desktop/MDF3_OTOOLE/Week4/MarineGrub/app/src/main/res/asset/index.html";
+    String url = "file:///android_asset/index.html";
 
     @SuppressLint("AddJavascriptInterface")
     @Override
@@ -76,7 +76,7 @@ public class MyActivity extends Activity {
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
             emailIntent.putExtra(Intent.EXTRA_TEXT, emailMsg);
 
-            emailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            //emailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
             emailIntent.setType("message/rfc822");
 

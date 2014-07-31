@@ -34,4 +34,9 @@
 
 ul#error {
 	text-shadow: none;
+	color: #BA0000;
+}
+
+div#errors {
+	color: #BA0000;
 }

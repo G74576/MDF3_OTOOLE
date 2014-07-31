@@ -7,7 +7,7 @@
 */
 
 $(document).ready(function(){
-	$('#collectionForm').validate({
+	var validator = $('#collectionForm').validate({
 		//errorElement: "div",
 		errorPlacement: function(error, element){
 			error.appendTo("div#errors");
@@ -54,3 +54,4 @@ $(document).ready(function(){
 		}
 	});
 });
+
